@@ -424,7 +424,8 @@ def run_from_config(config_path: str):
             param_dict["search_extent_px"]                  = adaptive_extents          # used by code
             param_dict["search_extent_deltas"]              = base_track_deltas         # user input (for logs)
             param_dict["use_no_georeferencing"]             = bool(use_no_georeferencing)
-            param_dict["fake_pixel_size"]                   = float(fake_pixel_size)
+            if fake_pixel_size is not None:
+                param_dict["fake_pixel_size"] = float(fake_pixel_size)
             param_dict["downsample_factor"]                 = int(downsample_factor)
             param_dict["undistort_image"]                   = undistort_image
             param_dict["camera_intrinsics_matrix"]          = camera_intrinsics_matrix
