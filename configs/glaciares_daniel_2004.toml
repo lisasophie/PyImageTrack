@@ -36,8 +36,8 @@ do_image_enhancement = true
 
 [cache]
 use_alignment_cache = false
-use_tracking_cache = true
-use_lod_cache = true
+use_tracking_cache = false
+use_lod_cache = false
 force_recompute_alignment = false
 force_recompute_tracking = false
 force_recompute_lod = false

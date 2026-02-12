@@ -495,14 +495,10 @@ def run_from_config(config_path: str):
 
 
                 if not used_cache_tracking:
-                    if getattr(image_pair, "images_aligned", False) or not used_cache_alignment:
-                        tracked_points = image_pair.track_points(tracking_area=polygon_inside)
-                        image_pair.tracking_results = tracked_points
-                    else:
-                        image_pair.perform_point_tracking(
-                            reference_area=polygon_outside,
-                            tracking_area=polygon_inside
-                        )
+                    # Track points regardless of alignment status
+                    # If images are not aligned, track_points() will issue a warning
+                    tracked_points = image_pair.track_points(tracking_area=polygon_inside)
+                    image_pair.tracking_results = tracked_points
 
                     if use_tracking_cache:
                         save_tracking_cache(
