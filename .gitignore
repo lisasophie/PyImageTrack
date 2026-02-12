@@ -1,24 +1,6 @@
-<<<<<<< HEAD
+# Byte-compiled / cache
 .idea/
 .venv/
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-*.egg-info/
-.pytest_cache/
-.mypy_cache/
-.ruff_cache/
-.DS_Store
-
-# data
-input/
-output/
-
-# local artifacts
-wsl
-=======
-# Byte-compiled / cache
 __pycache__/
 *.pyc
 *.pyo
@@ -29,9 +11,21 @@ __pycache__/
 # Build / packaging
 build/
 dist/
+*.pyd
 *.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.DS_Store
 *.egg
 
-# IDE 
-.idea
->>>>>>> 39a8e67 (Implemented no crs approach for non-georeferenced images)
+# data
+input/
+output/
+
+# local artifacts
+wsl
+
+# local configs (keep example template)
+configs/*.toml
+!configs/example_config.toml
