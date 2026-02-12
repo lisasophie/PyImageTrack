@@ -27,7 +27,7 @@ undistort_image = false
 downsample_factor = 1
 
 [flags]
-do_alignment = true
+do_alignment = false
 do_tracking = true
 do_filtering = true
 do_plotting = true
@@ -35,7 +35,7 @@ do_plotting = true
 do_image_enhancement = false
 
 [cache]
-use_alignment_cache = true
+use_alignment_cache = false
 use_tracking_cache = true
 use_lod_cache = true
 force_recompute_alignment = false
@@ -65,14 +65,14 @@ maximal_alignment_movement = "none"
 [tracking]
 image_bands = 0
 # px
-distance_of_tracked_points_px = 3
+distance_of_tracked_points_px = 1
 # px
 movement_cell_size = 5
 cross_correlation_threshold_movement = 0.5
 # search extent tuple: (right, left, down, up) in pixels around the movement cell
 # usually this refers to the offset in px between the images,
 # but if the adaptive mode is used, this means the expected offset in px per year
-search_extent_px = [3, 3, 5, 2]
+search_extent_px = [3, 3, 3, 2]
 
 [filter]
 level_of_detection_quantile = 0.5

@@ -631,6 +631,7 @@ class ImagePair:
                           "movement_column_direction",
                           "movement_distance_pixels",
                           "movement_bearing_pixels",
+                          "correlation_coefficient",
                           ],
             task_label="Tracking points for LoD"
         )
