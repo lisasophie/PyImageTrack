@@ -32,7 +32,7 @@ do_tracking = true
 do_filtering = true
 do_plotting = true
 # optional image enhancement via CLAHE
-do_image_enhancement = false
+do_image_enhancement = true
 
 [cache]
 use_alignment_cache = false
