@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .idea/
 .venv/
 __pycache__/
@@ -16,3 +17,21 @@ output/
 
 # local artifacts
 wsl
+=======
+# Byte-compiled / cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Environment / virtualenv
+.venv*
+
+# Build / packaging
+build/
+dist/
+*.egg-info/
+*.egg
+
+# IDE 
+.idea
+>>>>>>> 39a8e67 (Implemented no crs approach for non-georeferenced images)

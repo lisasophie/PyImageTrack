@@ -116,10 +116,17 @@ use_adaptive_tracking_window = bool(_get(cfg, "adaptive_tracking_window", "use_a
 alignment_params = AlignmentParameters({
     "number_of_control_points": _require(cfg, "alignment", "number_of_control_points"),
     # search extent tuple: (right, left, down, up) in pixels around the control cell
+<<<<<<< HEAD
     "control_search_extent_px": tuple(_require(cfg, "alignment", "control_search_extent_px")),
     "control_cell_size": _require(cfg, "alignment", "control_cell_size"),
     "cross_correlation_threshold_alignment": _require(cfg, "alignment", "cross_correlation_threshold_alignment"),
     "maximal_alignment_movement": _as_optional_value(_get(cfg, "alignment", "maximal_alignment_movement")),
+=======
+    "control_search_extent_px": (5, 5, 5, 5), # px
+    "control_cell_size": 5, # px
+    "cross_correlation_threshold_alignment": 0.8,
+    "maximal_alignment_movement": None, # px, can be set to = None
+>>>>>>> 39a8e67 (Implemented no crs approach for non-georeferenced images)
 })
 
 tracking_params = TrackingParameters({
@@ -134,6 +141,7 @@ tracking_params = TrackingParameters({
 })
 
 filter_params = FilterParameters({
+<<<<<<< HEAD
     "level_of_detection_quantile": _require(cfg, "filter", "level_of_detection_quantile"),
     "number_of_points_for_level_of_detection": _require(cfg, "filter", "number_of_points_for_level_of_detection"),
     "difference_movement_bearing_threshold": _require(cfg, "filter", "difference_movement_bearing_threshold"),
@@ -144,6 +152,18 @@ filter_params = FilterParameters({
     "difference_movement_rate_moving_window_size": _require(cfg, "filter", "difference_movement_rate_moving_window_size"),
     "standard_deviation_movement_rate_threshold": _require(cfg, "filter", "standard_deviation_movement_rate_threshold"),
     "standard_deviation_movement_rate_moving_window_size": _require(cfg, "filter", "standard_deviation_movement_rate_moving_window_size"),
+=======
+    "level_of_detection_quantile": 0.75,
+    "number_of_points_for_level_of_detection": 1000,
+    "difference_movement_bearing_threshold": 360,                    # degrees
+    "difference_movement_bearing_moving_window_size": 50,           # CRS units
+    "standard_deviation_movement_bearing_threshold": 360,            # degrees
+    "standard_deviation_movement_bearing_moving_window_size": 50,   # CRS units
+    "difference_movement_rate_threshold": 10,                      # CRS units / year
+    "difference_movement_rate_moving_window_size": 10,              # CRS units
+    "standard_deviation_movement_rate_threshold": 10,              # CRS units / year
+    "standard_deviation_movement_rate_moving_window_size": 50,      # CRS units
+>>>>>>> 39a8e67 (Implemented no crs approach for non-georeferenced images)
 })
 
 # ==============================
