@@ -573,10 +573,10 @@ def collect_pairs(input_folder: str,
                 continue
             # Use the original token as ID, but make it unique by appending identifier if present
             if file_identifier:
-                id_ = f"{observation_datetime.strftime("%Y%m%dT%H%M%S%f")}_{file_identifier}" if observation_datetime is not None else observation_datetime_user_string
+                id_ = f"{observation_datetime.strftime('%Y%m%dT%H%M%S%f')}_{file_identifier}" if observation_datetime is not None else observation_datetime_user_string
             else:
                 id_ = observation_datetime.strftime(
-                    "%Y%m%dT%H%M%S%f") if observation_datetime is not None else observation_datetime_user_string
+                    '%Y%m%dT%H%M%S%f') if observation_datetime is not None else observation_datetime_user_string
 
             id_hastime_from_filename[id_] = True
             id_to_file[id_] = path

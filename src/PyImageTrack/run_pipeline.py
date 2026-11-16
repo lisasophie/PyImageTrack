@@ -533,7 +533,7 @@ def run_from_config(config_path: str, verbose: bool = False, quiet: bool = False
     poly_outside_filename = _get(cfg, "polygons", "stable_area_filename", "none")
     poly_inside_filename = _require(cfg, "polygons", "moving_area_filename")
     moving_id_column = _get(cfg, "polygons", "moving_id_column", "moving_id")
-    image_cropping_buffer = _get(cfg, "polygons", "image_cropping_buffer", None)
+    image_cropping_buffer = _as_optional_value(_get(cfg, "polygons", "image_cropping_buffer", None))
 
     # Replace wildcard in polygon filenames with identifier if provided
     if identifier is not None:
@@ -1023,7 +1023,7 @@ def run_from_config(config_path: str, verbose: bool = False, quiet: bool = False
 
             # Directories
             # Use formatted dates for directory names (guaranteed correct, handles all date formats)
-            base_pair_dir = os.path.join(output_folder, f"{dt1_string.replace(" ","_")}_{dt2_string.replace(" ","_")}")
+            base_pair_dir = os.path.join(output_folder, f"{dt1_string.replace(' ','_')}_{dt2_string.replace(' ','_')}")
             enhancement_dir = os.path.join(base_pair_dir, enhancement_code)
             align_dir  = os.path.join(enhancement_dir, align_code)
             track_dir  = os.path.join(align_dir,     track_code)
