@@ -627,7 +627,8 @@ class ImagePair:
         self.image2_matrix_original, _ = crop_images_to_polygon(self.image2_matrix_original, transform2_before_cropping,
                                                                           self.crs,cropping_polygon, polygon_crs)
 
-    def align_images(self, reference_area: gpd.GeoDataFrame | None, polygon_inside: gpd.GeoDataFrame | None = None) -> None:
+    def align_images(self, reference_area: gpd.GeoDataFrame | None, polygon_inside: gpd.GeoDataFrame | None = None,
+                     *, compute_truecolor_aligned: bool = False) -> None:
         """
         Align images by tracking control points in a stable reference area.
 
@@ -644,6 +645,8 @@ class ImagePair:
             ``polygon_inside``.
         polygon_inside : gpd.GeoDataFrame, optional
             Moving area polygon, required when ``reference_area`` is None.
+        compute_truecolor_aligned : bool, optional
+            Also resample the original image for true-color output. Default is False.
 
         Returns
         -------
@@ -762,8 +765,10 @@ class ImagePair:
 
         self.images_aligned = True
 
-        # Optionally derive a true-color aligned image (if original data are available)
-        self.compute_truecolor_aligned_from_control_points()
+        # Avoid resampling the original image unless true-color output is requested.
+        self.image2_matrix_truecolor = None
+        if compute_truecolor_aligned:
+            self.compute_truecolor_aligned_from_control_points()
 
     def compute_truecolor_aligned_from_control_points(self):
         """

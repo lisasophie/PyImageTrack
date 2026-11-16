@@ -1121,7 +1121,10 @@ def run_from_config(config_path: str, verbose: bool = False, quiet: bool = False
                     # When poly_outside is None, align_images will use image_bounds minus polygon_inside
                     try:
                         with console.timer("Alignment", verbose=True):
-                                image_pair.align_images(poly_outside, polygon_inside=polygon_inside)
+                                image_pair.align_images(
+                                    poly_outside, polygon_inside=polygon_inside,
+                                    compute_truecolor_aligned=write_truecolor_aligned,
+                                )
                     except ValueError as e:
                         console.error(f"Alignment failed for pair {dt1_string} -> {dt2_string}: {e}")
                         console.error("Skipping this pair. Please check your alignment parameters or input data.")
