@@ -892,7 +892,7 @@ def track_movement_lsm(image1_matrix, image2_matrix, image_transform, points_to_
         raise TrackingPointRatioError(original_point_count, accepted_count, minimum_ratio)
 
     # Preserve counts for callers that need to report tracking quality. The returned
-    # dataframe is already filtered by the correlation threshold.
+    # dataframe retains matches below the correlation threshold for postprocessing.
     tracked_pixels.attrs["original_point_count"] = original_point_count
     tracked_pixels.attrs["tracking_input_point_count"] = tracking_input_point_count
     tracked_pixels.attrs["accepted_point_count"] = accepted_count

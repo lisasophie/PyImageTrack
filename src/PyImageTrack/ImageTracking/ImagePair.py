@@ -930,7 +930,11 @@ class ImagePair:
                                             valid_mask2=self.image2_valid_mask,
                                             cross_correlation_threshold=self.filter_parameters.cross_correlation_threshold_movement if self.filter_parameters is not None else None,
                                             task_label="[~] Tracking points for movement tracking")
-        accepted_point_count = len(tracked_points)
+        # Use the same counts as the ratio check in track_movement_lsm.
+        # Returned rows also include matches below the correlation threshold
+        # so that postprocessing can flag them and export rejection masks.
+        original_point_count = tracked_points.attrs["original_point_count"]
+        accepted_point_count = tracked_points.attrs["accepted_point_count"]
         self.tracking_quality = {
             "original_point_count": original_point_count,
             "accepted_point_count": accepted_point_count,
